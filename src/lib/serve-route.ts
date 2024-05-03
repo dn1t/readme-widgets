@@ -9,5 +9,7 @@ export async function serveRoute(
 ) {
 	const result = await generateSvg(el, dimensions, weights, params);
 
-	return new Response(result, { headers: { "Content-Type": "image/svg+xml" } });
+	return new Response(result, {
+		headers: { "Content-Type": "image/svg+xml", "Cache-Control": "no-cache" },
+	});
 }
