@@ -10,9 +10,12 @@ interface Track {
 	height: number;
 }
 
-async function getRecentlyPlayed(size: number): Promise<Result<Track>> {
+async function getRecentlyPlayed(
+	size: number,
+	lang: string,
+): Promise<Result<Track>> {
 	const res = await fetch(
-		"https://api.music.apple.com/v1/me/recent/played/tracks?l=en-US",
+		`https://api.music.apple.com/v1/me/recent/played/tracks?l=${lang}`,
 		{
 			headers: {
 				Authorization: `Bearer ${Deno.env.get("AM_DEV_TOKEN")}`,
@@ -59,7 +62,9 @@ export async function RecentlyPlayed(params: URLSearchParams) {
 	if (size < 1 || Number.isNaN(size))
 		return <ErrorWidget message="INVALID_PARAMS" />;
 
-	const res = await getRecentlyPlayed(size);
+	const lang = params.get("language") ?? "en-US";
+
+	const res = await getRecentlyPlayed(size, lang);
 	if (!res.success) return <ErrorWidget message={res.message} />;
 
 	const track = res.data;
