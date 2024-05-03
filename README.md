@@ -5,7 +5,7 @@
 `AM_DEV_TOKEN`: MusicKit Developer Token  
 `AM_USER_TOKEN`: MusicKit Music User Token
 
-## Widgets
+## Endpoints
 
 ### Apple Music Recently Played Widget
 
@@ -17,3 +17,13 @@
 |---|---|---|---|
 |artwork_size|String|708|Size of the artwork|
 |language|String|en-US|Language of Apple Music|
+
+### Redirect API
+
+Set this address as where users will be redirected when they click on widgets
+
+**URL** `/redirect`  
+**Query Parameters**:
+|Name|Type|Default|Description|
+|---|---|---|---|
+|to|"recently-played"|-|The endpoint of the widget the user clicked|
