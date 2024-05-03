@@ -13,8 +13,7 @@ export async function generateSvg(
 	el: () => ReactNode,
 	{ width, height }: { width: number; height: number },
 ) {
-	await initialized;
-	const fonts = await loadWeights([400]);
+	const [fonts] = await Promise.all([loadWeights([400]), initialized]);
 
 	return satori(el(), { width, height, fonts });
 }
