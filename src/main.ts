@@ -1,6 +1,7 @@
 import "std/dotenv/load";
 import { serveRoute } from "./lib/serve-route.ts";
 import { RecentlyPlayed } from "./routes/recently-played.tsx";
+import { redirect } from "./routes/redirect.tsx";
 
 export type Handler = (req: Request, url: URL) => Promise<Response> | Response;
 
@@ -9,6 +10,8 @@ Deno.serve((req) => {
 	const params = url.searchParams;
 
 	switch (url.pathname) {
+		case "/redirect":
+			return redirect(params);
 		case "/recently-played":
 			return serveRoute(
 				RecentlyPlayed,

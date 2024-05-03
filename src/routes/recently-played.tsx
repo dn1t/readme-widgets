@@ -2,7 +2,6 @@ import { ErrorWidget } from "../lib/error.tsx";
 import type { Result } from "../lib/result.d.ts";
 
 interface Track {
-	url: string;
 	name: string;
 	artist: string;
 	artwork: string;
@@ -43,7 +42,6 @@ async function getRecentlyPlayed(size: number): Promise<Result<Track>> {
 	return {
 		success: true,
 		data: {
-			url: attributes.url,
 			name: attributes.name,
 			artist: attributes.artistName,
 			artwork: attributes.artwork.url
@@ -57,7 +55,7 @@ async function getRecentlyPlayed(size: number): Promise<Result<Track>> {
 }
 
 export async function RecentlyPlayed(params: URLSearchParams) {
-	const size = Number.parseInt(params.get("artwork_size") ?? "472");
+	const size = Number.parseInt(params.get("artwork_size") ?? "708");
 	if (size < 1 || Number.isNaN(size))
 		return <ErrorWidget message="INVALID_PARAMS" />;
 
