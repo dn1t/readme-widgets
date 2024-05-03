@@ -10,10 +10,16 @@ const initialized = Deno.readFile(
 	.then((yoga) => initSatori(yoga));
 
 export async function generateSvg(
-	el: () => ReactNode,
+	el: (params: URLSearchParams) => Promise<ReactNode> | ReactNode,
 	{ width, height }: { width: number; height: number },
+	weights: (400 | 500 | 600 | 700)[],
+	params: URLSearchParams,
 ) {
-	const [fonts] = await Promise.all([loadWeights([400]), initialized]);
+	const [fonts, node] = await Promise.all([
+		loadWeights(weights),
+		el(params),
+		initialized,
+	]);
 
-	return satori(el(), { width, height, fonts });
+	return satori(node, { width, height, fonts });
 }
