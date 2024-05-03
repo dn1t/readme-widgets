@@ -1,9 +1,9 @@
 {
   "lock": false,
-	"tasks": {
-		"dev": "deno run -A --watch src/main.ts"
-	},
-	"importMap": "import-map.json",
+  "tasks": {
+    "dev": "deno run -A --watch src/main.ts"
+  },
+  "importMap": "import-map.json",
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "lib"

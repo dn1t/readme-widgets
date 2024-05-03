@@ -6,20 +6,20 @@ import { redirect } from "./routes/redirect.tsx";
 export type Handler = (req: Request, url: URL) => Promise<Response> | Response;
 
 Deno.serve((req) => {
-	const url = new URL(req.url);
-	const params = url.searchParams;
+  const url = new URL(req.url);
+  const params = url.searchParams;
 
-	switch (url.pathname) {
-		case "/redirect":
-			return redirect(params);
-		case "/recently-played":
-			return serveRoute(
-				RecentlyPlayed,
-				{ width: 640, height: 300 },
-				[500, 600, 700],
-				params,
-			);
-		default:
-			return new Response(null, { status: 404 });
-	}
+  switch (url.pathname) {
+    case "/redirect":
+      return redirect(params);
+    case "/recently-played":
+      return serveRoute(
+        RecentlyPlayed,
+        { width: 640, height: 300 },
+        [500, 600, 700],
+        params,
+      );
+    default:
+      return new Response(null, { status: 404 });
+  }
 });
