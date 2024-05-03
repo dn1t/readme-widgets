@@ -43,8 +43,6 @@ async function getRecentlyPlayed(
 		height = Math.round(width / aspectRatio);
 	}
 
-	console.log(attributes);
-
 	return {
 		success: true,
 		data: {
