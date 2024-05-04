@@ -4,6 +4,7 @@
 
 `AM_DEV_TOKEN`: MusicKit Developer Token  
 `AM_USER_TOKEN`: MusicKit Music User Token
+`GH_TOKEN`: GitHub Personal Access Token
 
 ## Endpoints
 

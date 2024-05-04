@@ -23,7 +23,7 @@ Deno.serve((req) => {
     case "/repository":
       return serveRoute(
         Repository,
-        { width: 840, height: 300 },
+        { width: 840, height: 300, resize: { width: 400, height: 142.85 } },
         [500, 600, 700],
         params,
       );
