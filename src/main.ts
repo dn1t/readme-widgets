@@ -2,6 +2,7 @@ import "std/dotenv/load";
 import { serveRoute } from "./lib/serve-route.ts";
 import { RecentlyPlayed } from "./routes/recently-played.tsx";
 import { redirect } from "./routes/redirect.tsx";
+import { Repository } from "./routes/repository.tsx";
 
 export type Handler = (req: Request, url: URL) => Promise<Response> | Response;
 
@@ -16,6 +17,13 @@ Deno.serve((req) => {
       return serveRoute(
         RecentlyPlayed,
         { width: 640, height: 300 },
+        [500, 600, 700],
+        params,
+      );
+    case "/repository":
+      return serveRoute(
+        Repository,
+        { width: 840, height: 300 },
         [500, 600, 700],
         params,
       );
