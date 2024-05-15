@@ -9,6 +9,9 @@ export type Handler = (req: Request, url: URL) => Promise<Response> | Response;
 Deno.serve((req) => {
   const url = new URL(req.url);
   const params = url.searchParams;
+  const _colorScheme = params.get("colorScheme");
+  const colorScheme =
+    _colorScheme === "light" || _colorScheme === "dark" ? _colorScheme : "auto";
 
   switch (url.pathname) {
     case "/redirect":
@@ -26,6 +29,7 @@ Deno.serve((req) => {
         { width: 840, height: 300, resize: { width: 420, height: 150 } },
         [500, 600, 700],
         params,
+        colorScheme,
       );
     default:
       return new Response(null, { status: 404 });
