@@ -169,6 +169,11 @@ export async function RecentlyPlayed(params: URLSearchParams) {
               lineHeight: "43px",
               color: track.textColor,
               width: 308,
+              display: "-webkit-box",
+              WebkitLineClamp: 1,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
             }}
           >
             {track.name}
@@ -180,6 +185,11 @@ export async function RecentlyPlayed(params: URLSearchParams) {
               fontSize: 32,
               lineHeight: "38px",
               color: `${track.textColor}cc`,
+              display: "-webkit-box",
+              WebkitLineClamp: 1,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
             }}
           >
             {track.artist}
